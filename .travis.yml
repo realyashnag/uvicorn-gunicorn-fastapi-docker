@@ -1,0 +1,13 @@
+language: python
+
+services:
+  - docker
+
+before_install:
+  - docker build -t myimage .
+  - docker run -d --name mycontainer -p 80:80 myimage
+  - docker ps -a
+
+script:
+  - python test.py
+
